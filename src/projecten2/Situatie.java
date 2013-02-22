@@ -36,4 +36,6 @@ public class Situatie extends Melding{
     public void setOmschrijving(String omschrijving){
         this.omschrijving = omschrijving;
     }
+
+      
 }

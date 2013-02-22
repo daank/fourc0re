@@ -4,6 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import projecten2.*;
+
         
 public abstract class MeldingTest implements ActionListener{
     
@@ -90,9 +95,19 @@ public abstract class MeldingTest implements ActionListener{
                         (SType) typeCBox.getSelectedItem(), omschrijvingTArea.getText());
                 
                 System.out.println("Situatie toegevoegd:" + situatie.getTitel() +", " + situatie.getType() +", " + situatie.getOmschrijving());
+               Databaseconnectie connectie = new Databaseconnectie();
+                try {
+                    connectie.situatieToevoegen(situatie);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MeldingTest.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }  
+
+            
         });
     }
+
+    
     
 }
