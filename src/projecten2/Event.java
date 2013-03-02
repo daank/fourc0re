@@ -2,19 +2,32 @@ package projecten2;
 
 
 public class Event extends Melding{
-    
+    private int idMelding;
     private String titel;
     private String datum;
     private String tijdstip;
-    private EType type;
+    private String type;
     private String omschrijving;
     
-    public Event(String titel, String datum, String tijdstip, EType type, String omschrijving){
+    public Event(int idMelding, String titel, String datum, String tijdstip, String type, String omschrijving){
+	this.idMelding = idMelding;
         this.titel = titel;
         this.datum = datum;
         this.tijdstip = tijdstip;
         this.type = type;
         this.omschrijving = omschrijving;
+    }
+
+    public Event() {
+        this(1,"onbekend","onbekend","onbekend","onbekend","onbekend");
+    }
+
+    public int getIdMelding() {
+        return idMelding;
+    }
+
+    public void setIdMelding(int idMelding) {
+        this.idMelding = idMelding;
     }
     
     public String getTitel(){
@@ -45,7 +58,7 @@ public class Event extends Melding{
         return type.toString();
     }
     
-    public void setType(EType type){
+    public void setType(String type){
         this.type = type;
     }
     
