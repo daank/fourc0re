@@ -4,18 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import projecten2.*;
+
         
 public abstract class MeldingTest implements ActionListener{
     
     public static void main(String[] args){
-                
+        JLabel idMeldingLbl = new JLabel("idMelding: ");
+        final JTextField idMeldingTxt = new JTextField(20);
+         JLabel gebruikerIdLbl = new JLabel("gebruikerId: ");
+        final JTextField gebruikerIdTxt = new JTextField(20);
         JLabel titelLbl = new JLabel("Titel: ");
         final JTextField titelTxt = new JTextField(20);
         JLabel typeLbl = new JLabel("Type: ");
         final JComboBox typeCBox = new JComboBox(SType.values());
         //typeCBox.setModel(new DefaultComboBoxModel(SType.values()));
+         JLabel locatieLbl = new JLabel("locatie: ");
+        final JTextField locatieTxt = new JTextField(20);
         JLabel omschrijvingLbl = new JLabel("Omschrijving: ");
         final JTextArea omschrijvingTArea = new JTextArea(5, 20);
+         JLabel afbeeldingIdLbl = new JLabel("afbeeldingId: ");
+        final JTextField afbeeldingIdTxt = new JTextField(20);
         JButton toevoegenBtn = new JButton("Toevoegen");
         
         
@@ -82,18 +94,34 @@ public abstract class MeldingTest implements ActionListener{
         frame.setVisible(true);
         frame.pack();
            
+             DBConnectie connectie = new DBConnectie();
+          Situatie s = new Situatie(1, idMeldingTxt.getText(), gebruikerIdTxt.getText(),
+                            titelTxt.getText(),typeCBox.getSelectedItem(), locatieTxt.getText(), omschrijvingTArea.getText(),
+                            afbeeldingIdTxt.getText());
+          connectie.addSituatie(s);
         toevoegenBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Situatie situatie = new Situatie(titelTxt.getText(),
-                        (SType) typeCBox.getSelectedItem(), omschrijvingTArea.getText());
+              // Situatie situatie = new Situatie(titelTxt.getText(),
+                //        (SType) typeCBox.getSelectedItem(), omschrijvingTArea.getText());
                 
-                System.out.println("Situatie toegevoegd:" + situatie.getTitel() +", " + situatie.getType() +", " + situatie.getOmschrijving());
+                //System.out.println("Situatie toegevoegd:" + situatie.getTitel() +", " + situatie.getType() +", " + situatie.getOmschrijving());
+               //Databaseconnectie connectie = new Databaseconnectie();
+           
+              //  try {
+                    //connectie.situatieToevoegen(situatie);
+                  
+                // catch (SQLException ex) {
+                  //  Logger.getLogger(MeldingTest.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
-            }  
+            //}  
+               
         });
     }
+
+    
     
 }
 package projecten2;

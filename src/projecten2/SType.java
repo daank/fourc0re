@@ -1,4 +1,4 @@
-package projecten2;
+package Projecten2;
 
 
 public enum SType {
@@ -15,6 +15,7 @@ public enum SType {
       naam = s;
     }
     
+    @Override
     public String toString(){
         return naam;
     }

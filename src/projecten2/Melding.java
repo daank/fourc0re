@@ -1,10 +1,17 @@
-package projecten2;
+package Projecten2;
 
 
 public class Melding {
     
+    private int meldingId;
+    private int gebruikerId;
     private String titel;
-    private enum type{};
+    private String locatie;
     private String omschrijving;
+    private int afbeeldingId;
+    
+    public Melding(){
+        
+    }
     
 }

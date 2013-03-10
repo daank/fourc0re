@@ -1,3 +1,59 @@
+package projecten2;
+
+import java.awt.List;
+import java.sql.*;
+import java.util.ArrayList;
+
+
+ class Databaseconnectie {
+ private static final String JDBC_URL_MYSQL = "jdbc:mysql://localhost:3306/ProductDB?user=jdbc&password=jdbc";
+    
+    /*
+     * Voegt een nieuw product toe aan de databank.
+     * De returnwaarde geeft aan of de bewerking geslaagd is.
+     */
+    public boolean addSituatie(Situatie s) {
+        try (Connection conn = DriverManager.getConnection(JDBC_URL_MYSQL)) {
+            PreparedStatement stat = conn.prepareStatement("INSERT INTO tblSituatie VALUES (?,?,?,?,?,?,?)");
+            stat.setInt(1, s.getMeldingId());
+            stat.setInt(2, s.getGebruikerId());
+            stat.setString(3, s.getTitel());
+            stat.setString(4, s.getType());
+            stat.setString(5, s.getLocatie());
+            stat.setString(6, s.getOmschrijving());
+            stat.setInt(7, s.getAfbeeldingId());
+            stat.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            for (Throwable t : ex) {
+                t.printStackTrace();
+            }
+            return false;
+        }
+    }
+    
+    public boolean addEvent(Event e) {
+        try (Connection conn = DriverManager.getConnection(JDBC_URL_MYSQL)) {
+            PreparedStatement stat = conn.prepareStatement("INSERT INTO tblSituatie VALUES (?,?,?,?,?,?,?,?)");
+            stat.setInt(1, e.getMeldingId());
+            stat.setInt(2, e.getGebruikerId());
+            stat.setString(3, e.getTitel());
+            stat.setString(4, e.getDatum());
+            stat.setString(5, e.getTijdstip());
+            stat.setString(6, e.getType());
+            stat.setString(7, e.getOmschrijving());
+            stat.setInt(8, e.getAfbeeldingId());
+            stat.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            for (Throwable t : ex) {
+                t.printStackTrace();
+            }
+            return false;
+        }
+    }
+    
+}
 
 package projecten2;
 

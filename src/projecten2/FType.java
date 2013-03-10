@@ -1,4 +1,4 @@
-package projecten2;
+package Projecten2;
 
 
 public enum FType {
@@ -8,12 +8,13 @@ public enum FType {
     TYPE3 ("Foute Melding"),
     TYPE4 ("Meld Misbruik");
     
-    private String naam;
+    private final String naam;
     
     private FType(String s){
         naam = s;
     }
     
+    @Override
     public String toString(){
         return naam;
     }
